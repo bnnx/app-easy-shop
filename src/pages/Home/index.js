@@ -23,6 +23,7 @@ export default function Home({ navigation }) {
         </View>
         <View style={styles.inputContainer}>
           <TextInput
+            style={styles.inputText}
             placeholder='What would you like?' 
             onChangeText={text => setSearchText(text)} 
             value={searchText}
@@ -30,7 +31,7 @@ export default function Home({ navigation }) {
           <Icon onPress={() => alert('Pesquisar')} name='magnifier' size={20} style={styles.headerIcons}/>
         </View>
       </View>
-      <ProductList/>
+      <ProductList navigation={navigation}/>
     </View>
 	)
 }

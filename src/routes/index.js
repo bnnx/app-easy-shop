@@ -5,6 +5,7 @@ const Stack = createStackNavigator();
 
 import Home from '../pages/Home';
 import Cart from '../pages/Cart';
+import Product from '../pages/Product';
 
 export default function Routes() {
   return (
@@ -17,6 +18,7 @@ export default function Routes() {
       }}
     >
       <Stack.Screen name='Home' component={Home}/>
+      <Stack.Screen name='Product' component={Product}/>
       <Stack.Screen name='Cart' component={Cart}/>
     </Stack.Navigator>
   )

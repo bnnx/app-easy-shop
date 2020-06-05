@@ -7,7 +7,7 @@ import { colors } from '../../../styles';
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function ProductList({}) {
+export default function ProductList({ navigation }) {
 
   const [api, setApi] = useState([
     {
@@ -17,22 +17,34 @@ export default function ProductList({}) {
         {
           id: 1,
           product: 'Banana',
-          price: '3.99'
+          description: 'Banana = top, The bests and cheapest smartphones of the WORLD! ',
+          price: '3.99',
+          rating: 5,
+          weight: '70 - 120 grams (g)'
         },
         {
           id: 2,
           product: 'Potato',
-          price: '5.29'
+          description: 'Potato = top, The bests and cheapest smartphones of the WORLD! ',
+          price: '5.29',
+          rating: 3,
+          weight: '78 - 95 grams (g)'
         },
         {
           id: 3,
-          product: 'Banana',
-          price: '3.99'
+          product: 'Apple',
+          description: 'Apple = top, The bests and cheapest smartphones of the WORLD! ',
+          price: '4.29',
+          rating: 4,
+          weight: '78 - 125 grams (g)'
         },
         {
           id: 4,
-          product: 'Apple',
-          price: '4.29'
+          product: 'Lemonade',
+          description: 'Lemons are high in vitamin C, fiber, and various beneficial plant compounds. These nutrients are responsible for several health benefits. In fact, lemons may support hear health, weight control, and digestive health.',
+          price: '2.29',
+          rating: 5,
+          weight: '58 - 65 grams (g)'
         }
       ]
     },
@@ -43,12 +55,18 @@ export default function ProductList({}) {
         {
           id: 1,
           product: 'Banana',
-          price: '3.99'
+          description: 'Banana = top, The bests and cheapest smartphones of the WORLD! ',
+          price: '3.99',
+          rating: 5,
+          weight: '70 - 120 grams (g)'
         },
         {
           id: 2,
           product: 'Apple',
-          price: '4.29'
+          description: 'Apple = top, The bests and cheapest smartphones of the WORLD! ',
+          price: '4.29',
+          rating: 4,
+          weight: '78 - 125 grams (g)'
         }
       ]
     },
@@ -59,30 +77,46 @@ export default function ProductList({}) {
         {
           id: 1,
           product: 'Tomato',
-          price: '3.99'
+          description: 'Tomato = top, The bests and cheapest smartphones of the WORLD! ',
+          price: '3.99',
+          rating: 2,
+          weight: '68 - 85 grams (g)'
         },
         {
           id: 2,
           product: 'Potato',
-          price: '5.29'
+          description: 'Potato = top, The bests and cheapest smartphones of the WORLD! ',
+          price: '5.29',
+          rating: 3,
+          weight: '78 - 95 grams (g)'
         }
       ]
     }
   ])
 
+  function onPressProduct(product, description, price, rating, weight) {
+    return navigation.navigate('Product', { 
+      product: product, 
+      description: description, 
+      price: price, 
+      rating: rating, 
+      weight: weight
+    })
+  }
+
   function List(products) {
 
-    function ProductCard(product, price) {
+    function ProductCard(product, description, price, rating, weight) {
       return (
-        <View style={styles.productCard}>
-          <TouchableOpacity onPress={() => alert('Adicionar')} style={styles.addCartButton}>
+        <TouchableOpacity onPress={() => onPressProduct(product, description, price, rating, weight)} style={styles.productCard}>
+          <TouchableOpacity onPress={() => navigation.navigate('Cart')} style={styles.addCartButton}>
             <Icon name='plus' size={24} style={styles.addIcon}/>
           </TouchableOpacity>
           <View style={styles.infosContainer}>
             <Text style={styles.productText}>{product}</Text>
             <Text style={styles.productText}>$ {price}</Text>
           </View>
-        </View>
+        </TouchableOpacity>
       )
     }
 
@@ -95,7 +129,7 @@ export default function ProductList({}) {
           showsVerticalScrollIndicator={false}
           numColumns={2}
           renderItem={({ item }) => (
-            ProductCard(item.product, item.price)
+            ProductCard(item.product, item.description, item.price, item.rating, item.weight)
           )}
         />
       </View>

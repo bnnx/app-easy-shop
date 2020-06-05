@@ -30,4 +30,8 @@ export const styles = StyleSheet.create({
     borderWidth: wp(0.3),
     borderColor: colors.greyLight,
   },
+  inputText: {
+    fontFamily: 'Muli Regular',
+    width: wp(70)
+  }
 })
