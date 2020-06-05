@@ -1,8 +1,11 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View, Text } from 'react-native';
 
-export default function Cart() {
+export default function Cart({ navigation }) {
   return (
-		<Text>Cart</Text>
+    <View>
+      <Text>Cart</Text>
+      <Text onPress={() => navigation.goBack()}>Voltar</Text>
+    </View>
 	)
 }
