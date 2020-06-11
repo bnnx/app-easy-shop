@@ -9,7 +9,8 @@ import Product from '../pages/Product';
 
 export default function Routes() {
   return (
-    <Stack.Navigator 
+    <Stack.Navigator
+      initialRouteName='Home'
       screenOptions={{
         gestureEnabled: true,
         gestureDirection: "horizontal",

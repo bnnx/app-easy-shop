@@ -124,6 +124,7 @@ export default function ProductList({ navigation }) {
       <View style={styles.container}>
         <FlatList
           data={products}
+          keyExtractor={(item) => item.id.toString()}
           contentContainerStyle={styles.flatlistContainer}
           columnWrapperStyle={styles.columnStyle}
           showsVerticalScrollIndicator={false}
